@@ -72,36 +72,28 @@ function response(
             "마을 (id : 00)" +
             "\n" +
             "드넓은 평원 (id : 01)" +
-            "\n" +
-            "한적한 호수 (id : 02)" +
-            "\n" +
-            "깜깜한 동굴 (id : 03)"
         );
+
     if (msg == "/장소 이동") replier.reply("장소id를 입력해주세요.");
     if (msg == "/장소 이동 00") {
         replier.reply("마을로 이동합니다...");
         player.mapData.ID = 0;
     }
     if (msg == "/장소 이동 01") {
-        replier.reply("드넓은 평원으로 이동합니다..." + "\n" + "권장레벨 : 1 ~ 8");
+        replier.reply("드넓은 평원으로 이동합니다..." + "\n" + "권장레벨 : 1 ~ 12");
         player.mapData.ID = 1;
-    }
-    if (msg == "/장소 이동 02") {
-        replier.reply("한적한 호수로 이동합니다..." + "\n" + "권장레벨 : 6 ~ 15");
-        player.mapData.ID = 2;
-    }
-    if (msg == "/장소 이동 03") {
-        replier.reply("깜깜한 동굴로 이동합니다..." + "\n" + "권장레벨 : 13 ~ 23");
-        player.mapData.ID = 3;
-    }
 
-    if (msg == "/상점")
+    if (msg == "/상점"){
         replier.reply(
             "무기뽑기권 (Lv. 1 ~ Lv.10) / 2,500 G / id 000" +
             "\n" +
             "\n" +
             "랜덤경험치병(XXXS ~ XS)(Lv. 1 ~ Lv. 10) / 2,000G / id 001"
         );
+        if (player.mapData.ID !== 0)
+          replier.reply ("마을로 이동한 후에 상점을 이용해주세요.")
+    }
+
     if (msg == "/구매 000") {
         if (playerG >= 2500) {
             playerG - 2500;
@@ -168,20 +160,25 @@ function response(
 
     if(msg=="/사냥"){
         var j = Math.floor(Math.random() * 5);
-        if (j == 0 && 1) {
-            replier.reply("XXXS 경험치병 획득! 자동사용됩니다(20EXP 획득)");
-            playerEXP + 20;
+        if (j == 0) {
+            
+
+        }
+        if (j == 1) {
+            
+
         }
         if (j == 2) {
-            replier.reply("XXS 경험치병 획득! 자동사용됩니다(50EXP 획득)");
-            playerEXP + 50;
+        
+
         }
         if (j == 3) {
-        
+
+   
         }
-        if (j==4){
-          let pus = playerLv<=1?(1-playerLv)*25:0;
-          Math.floor(Math.random()*pus/25)==0?playerGold+Math.floor(Math.random()*80)&&playerEXP+Math.floor(Math.random()*4)+3:replier.reply("너무강한나머지 실패하셨스빈다.");
+        if (j == 4){
+         
+
         }
     }
     
@@ -273,6 +270,8 @@ function response(
             "/" +
             " " +
             playermaxExp +
+            " " +
+            (playerEXP/maxEXP.tofixed(3)) +
             "\n" +
             playerG +
             " "+
