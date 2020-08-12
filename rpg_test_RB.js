@@ -71,8 +71,7 @@ function response(
         replier.reply(
             "마을 (id : 00)" +
             "\n" +
-            "드넓은 평원 (id : 01)" +
-        );
+            "드넓은 평원 (id : 01)");
 
     if (msg == "/장소 이동") replier.reply("장소id를 입력해주세요.");
     if (msg == "/장소 이동 00") {
@@ -281,4 +280,5 @@ function response(
             "ATK"
         );
     }
+}
 }
