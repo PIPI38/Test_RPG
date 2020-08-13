@@ -9,15 +9,7 @@
  */ // RPG test bot / ver. 1.1.1
 //special thanks _ acr8n님 _ 북극여우님 _ 뀨야님 _ 퓨퓨님
 
-function response(
-    room,
-    msg,
-    sender,
-    isGroupChat,
-    replier,
-    imageDB,
-    packageName
-) {
+function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
     var player = {
         name: sender,
         Lv: 1,
@@ -81,7 +73,7 @@ function response(
     if (msg == "/장소 이동 01") {
         replier.reply("드넓은 평원으로 이동합니다..." + "\n" + "권장레벨 : 1 ~ 12");
         player.mapData.ID = 1;
-
+    }
     if (msg == "/상점"){
         replier.reply(
             "무기뽑기권 (Lv. 1 ~ Lv.10) / 2,500 G / id 000" +
@@ -100,37 +92,36 @@ function response(
             replier.reply("골드가 부족합니다.");
         }
         var r = Math.floor(Math.random() * 9);
-        if (r == 0) {
-            replier.reply("아무것도 나오지 않았네요...");
-        }
-        if (r == 1) {
-            replier.reply("경험치병 (XXXS) X1 획득! 자동사용됩니다 (20EXP 획득)");
-            playerEXP + 20;
-        }
-        if (r == 2) {
-            replier.reply("경험치병 (XXS) X1 획득! 자동사용됩니다 (50EXP 획득)");
-            playerEXP + 50;
-        }
-        if (r == 3 && 4) {
-            replier.reply(
-                "'금간 나무검'(id : a) 획득! /가방으로 아이템을 확인하세요!"
-            );
-        }
-        if (r == 5) {
-            replier.reply(
-                "'일반 나무검'(id : b) 획득! /가방으로 아이템을 확인하세요!"
-            );
-        }
-        if (r == 6) {
-            replier.reply(
-                "'단단한 나무검'(id : c) 획득! /가방으로 아이템을 확인하세요!"
-            );
-        }
-        if (r == 7) {
-            replier.reply("'금간 돌검'(id : e) 획득! /가방으로 아이템을 확인하세요!");
-        }
-        if (r == 8) {
-            replier.reply("'일반 돌검'(id : f) 획득! /가방으로 아이템을 확인하세요!");
+        switch(r){
+            case 0:
+                replier.reply("아무것도 나오지 않았네요...");
+                break;
+            case 1:
+                replier.reply("경험치병 (XXXS) X1 획득! 자동사용됩니다 (20EXP 획득)");
+                playerEXP + 20;
+                break;
+            case 2:
+                replier.reply("경험치병 (XXS) X1 획득! 자동사용됩니다 (50EXP 획득)");
+                playerEXP + 50;
+                break;
+            case 3:
+
+            case 4:
+                replier.reply("'금간 나무검'(id : a) 획득! /가방으로 아이템을 확인하세요!");
+                break;
+            case 5:
+                replier.reply("'일반 나무검'(id : b) 획득! /가방으로 아이템을 확인하세요!");
+                break;
+            case 6:
+                replier.reply("'단단한 나무검'(id : c) 획득! /가방으로 아이템을 확인하세요!");
+                break;
+            case 7:
+                replier.reply("'금간 돌검'(id : e) 획득! /가방으로 아이템을 확인하세요!");
+                break;
+            case 8:
+                replier.reply("'일반 돌검'(id : f) 획득! /가방으로 아이템을 확인하세요!");
+                break;
+            default:
         }
         //ex 무기이름 레벨제한 공격력증가 / 맨손 L1 0 / 금간나무검 L1 1 / 일반나무검 L3 2
         //단단한나무검 L4 3 / 매우단단한나무검 L7 5(사냥으로 1%드랍) / 금간돌검 L7 4 / 일반돌검 L10 6
@@ -280,5 +271,4 @@ function response(
             "ATK"
         );
     }
-}
 }
